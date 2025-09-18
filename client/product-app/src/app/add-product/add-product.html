@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <h2 class="mb-4">Add New Product</h2>
+    
+    <form (submit)="addNewProduct($event)">
+      <div class="mb-3">
+        <label for="productId" class="form-label">Product ID</label>
+        <input type="number" class="form-control" id="productId" 
+               [(ngModel)]="product.id" name="productId"
+               (change)="checkValidId(product.id)" required>
+          <div *ngIf="idErrorShow" class="alert alert-warning mt-2" role="alert">
+          {{ idErrorMsg }}
+        </div>
+
+      </div>
+      
+      <div class="mb-3">
+        <label for="productName" class="form-label">Product Name</label>
+        <input type="text" class="form-control" id="productName" 
+               [(ngModel)]="product.name" name="productName" required>
+      </div>
+      
+      <div class="mb-3">
+        <label for="productDesc" class="form-label">Description</label>
+        <textarea class="form-control" id="productDesc" rows="3"
+                  [(ngModel)]="product.description" name="productDesc"></textarea>
+      </div>
+      
+      <div class="mb-3">
+        <label for="productPrice" class="form-label">Price</label>
+        <input type="number" class="form-control" id="productPrice" step="0.01"
+               [(ngModel)]="product.price" name="productPrice" required>
+      </div>
+      
+      <div class="mb-3">
+        <label for="productUnits" class="form-label">Units</label>
+        <input type="number" class="form-control" id="productUnits"
+               [(ngModel)]="product.units" name="productUnits" required>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Add Product</button>
+    </form>
+
+      <div *ngIf="noticeShow" class="alert alert-success mt-3" role="alert">
+      {{ noticeMsg }}
+    </div>
+
+  </div>
+</div>
